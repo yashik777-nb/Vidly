@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using Microsoft.Ajax.Utilities;
+using System;
+using System.Web.Mvc;
 using Vidly.Models;
 
 namespace Vidly.Controllers
@@ -30,6 +32,21 @@ namespace Vidly.Controllers
             // 1. EmptyResult -> HelperMethod:  -> When an action does not need to return any values -> void.
 
             // All the helper methods are in the base controller class.
+
+        }
+
+        public ActionResult Edit(int id)
+        {
+            return Content( "Id: " + id);
+        }
+
+        // To make a parameter optional, we have to make it nullable
+        public ActionResult Index (int? pageIndex, string sortBy)
+        {
+            if (!pageIndex.HasValue) { pageIndex = 1; }
+            if(string.IsNullOrWhiteSpace(sortBy)) { sortBy = "Name"; }
+
+            return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
 
         }
     }
