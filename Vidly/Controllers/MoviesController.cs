@@ -12,14 +12,22 @@ namespace Vidly.Controllers
         {
             Movie movie = new Movie() { Name = "KGF" };
 
-            //return View(movie); // View method in Controller class
+            // ViewData data dictonary - multiple ways of passing data to the view
+
+            //ViewData["Movie"] = movie;
+
+            //ViewBag.Movie = movie;
+            
+            //return View();
+
+             return View(movie); // View method in Controller class
             // return new ViewResult (movie); another way of sending data to view
 
             // return Content("Hello World");
             // return HttpNotFound();
             // return new EmptyResult();
 
-            return RedirectToAction("Index", "Home", new { page=1, sort="name" }); // Action , Controller
+            // return RedirectToAction("Index", "Home", new { page=1, sort="name" }); // Action , Controller
 
             // 1. ViewResult -> HelperMethod: View() -> To return a view.
             // 1. ParitalViewResult -> HelperMethod: PartialView() -> To return a partial view.
