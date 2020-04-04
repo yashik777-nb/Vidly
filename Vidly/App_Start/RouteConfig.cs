@@ -9,16 +9,21 @@ namespace Vidly
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // Enable Attribute Routing - Available in MVC 5
+
+            routes.MapMvcAttributeRoutes();
+
+
             // Order of the routes matter. We need to define from most specific to most generic
             // Add contrainsts on the parameters
             // new {year = @"\d{4}", month = @"\d{2}"}
 
-            routes.MapRoute(
-                "MoviesByReleaseDate",
-                "movies/released/{year}/{month}",
-                new { controller = "movies", action = "ByReleaseDate" },
-                new {year = @"2015|2016", month = @"\d{2}"}
-                );
+            //routes.MapRoute(
+            //    "MoviesByReleaseDate",
+            //    "movies/released/{year}/{month}",
+            //    new { controller = "movies", action = "ByReleaseDate" },
+            //    new {year = @"2015|2016", month = @"\d{2}"}
+            //    );
 
             routes.MapRoute(
                 name: "Default",
