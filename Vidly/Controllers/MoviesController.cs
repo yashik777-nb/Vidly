@@ -85,7 +85,6 @@ namespace Vidly.Controllers
         {
             var ViewData = new MovieFormViewModel
             {
-                Movie = null,
                 GenreTypes = _context.GenreTypes.ToList()
             };
             return View("MoviesForm", ViewData);
@@ -94,9 +93,8 @@ namespace Vidly.Controllers
         public ActionResult Edit(int id)
         {
             var movie = _context.Movies.Single(c => c.Id == id);
-            var viewData = new MovieFormViewModel
+            var viewData = new MovieFormViewModel (movie)
             {
-                Movie = movie,
                 GenreTypes = _context.GenreTypes.ToList()
             };
             return View("MoviesForm", viewData);
@@ -106,9 +104,8 @@ namespace Vidly.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Save(Movie movie)
         {
-            var viewData = new MovieFormViewModel
+            var viewData = new MovieFormViewModel(movie)
             {
-                Movie = movie,
                 GenreTypes = _context.GenreTypes.ToList()
             };
 
