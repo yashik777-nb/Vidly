@@ -243,6 +243,10 @@
     <Compile Include="Migrations\202104041350181_MovieTable.Designer.cs">
       <DependentUpon>202104041350181_MovieTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104041401426_GenreRequiredInMovies.cs" />
+    <Compile Include="Migrations\202104041401426_GenreRequiredInMovies.Designer.cs">
+      <DependentUpon>202104041401426_GenreRequiredInMovies.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -250,6 +254,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\Min18YrsIfAMember.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -390,6 +395,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104041350181_MovieTable.resx">
       <DependentUpon>202104041350181_MovieTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104041401426_GenreRequiredInMovies.resx">
+      <DependentUpon>202104041401426_GenreRequiredInMovies.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
