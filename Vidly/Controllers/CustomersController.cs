@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
+using Vidly.ViewModels;
 using System.Data.Entity;
 
 namespace Vidly.Controllers
@@ -41,6 +42,54 @@ namespace Vidly.Controllers
                 return HttpNotFound();
 
             return View(customer);
+        }
+
+        //[Route("customers/new")]
+        public ActionResult New()
+        {
+            var membershipTypes = _context.MembershipTypes.ToList();
+            var viewModel = new CustomerFormViewModel
+            {
+                MembershipTypes = membershipTypes
+            };
+            return View( "CustomerForm",viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Customer customer)
+        {
+            if(customer.Id == 0)
+            {
+                _context.Customers.Add(customer);
+            }
+            else
+            {
+                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+
+                //TryUpdateModel(customerInDb, "", new string[] { "Name" });
+                customerInDb.Name = customer.Name;
+                customerInDb.BirthDate = customer.BirthDate;
+                customerInDb.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
+                customerInDb.MembershipTypeId = customer.MembershipTypeId;
+
+            }
+            
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Customers");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+
+            if (customer == null) return HttpNotFound();
+
+            var viewModel = new CustomerFormViewModel { 
+                MembershipTypes = _context.MembershipTypes.ToList(),
+                Customer = customer
+            };
+
+            return View("CustomerForm", viewModel);
         }
 
         private IEnumerable<Customer> GetCustomers()

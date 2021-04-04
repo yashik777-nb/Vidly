@@ -4,8 +4,8 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 @Html.ActionLink("Vidly", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Customers", "Random", "Movies", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Movies", "Random", "Movies", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Customers", "Index", "Customers", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Movies", "Index", "Movies", new { area = "" }, new { @class = "navbar-brand" })
             </ul>
             @Html.Partial("_LoginPartial")
         </div>
