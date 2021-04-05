@@ -28,8 +28,10 @@ namespace Vidly.Controllers
         [Route("customers")]
         public ActionResult Index()
         {
-            var customersData = _context.Customers.Include(c => c.MembershipType).ToList();
-            return View(customersData);
+            // data table changes
+            //var customersData = _context.Customers.Include(c => c.MembershipType).ToList();
+            //return View(customersData);
+            return View();
             //return Content("Test");
         }
 
@@ -115,3 +117,4 @@ namespace Vidly.Controllers
         }
     }
 }
+
