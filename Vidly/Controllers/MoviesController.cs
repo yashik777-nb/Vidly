@@ -69,10 +69,12 @@ namespace Vidly.Controllers
         //    return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
         //}
 
+        [Route("movies")]
         public ViewResult Index()
         {
-            var movies = _context.Movies.Include(c => c.GenreType).ToList();
-            return View(movies);
+            //var movies = _context.Movies.Include(c => c.GenreType).ToList();
+            //return View(movies);
+            return View();
         }
 
         public ActionResult Details(int id)

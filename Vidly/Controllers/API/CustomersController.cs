@@ -34,7 +34,7 @@ namespace Vidly.Controllers.API
         [HttpGet]
         public IHttpActionResult GetCustomer(int id)
         {
-            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+            var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == id);
 
             if (customer == null) return NotFound();
                     
@@ -68,6 +68,8 @@ namespace Vidly.Controllers.API
             var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == id);
             if (customerInDb == null) throw new HttpResponseException(HttpStatusCode.NotFound);
 
+            //Mapper.Map<CustomerDto, Customer>(customerDto, customerInDb);
+            // Can ignore the generic parameters because the compiler can recognize the data types from the parameters
             Mapper.Map(customerDto, customerInDb);
 
             //customerInDb.Name = customer.Name;

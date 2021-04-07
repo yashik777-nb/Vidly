@@ -26,7 +26,7 @@ namespace Vidly.Models
 
         [Required(ErrorMessage = "Please enter the stock")]
         [Display(Name = "Number in Stock")]
-        [Range(10,20)]
+        [Range(1,20)]
         public byte Stock { get; set; }
 
         
