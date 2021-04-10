@@ -6,8 +6,13 @@ using System.Web.Mvc;
 
 namespace Vidly.Controllers
 {
+    //[RoutePrefix("Home")]
+    //[Route] -> Default Cotroller
+    [AllowAnonymous] // -> Allow Home Controller to be anonymously loggeed in
     public class HomeController : Controller
     {
+       // [Route] // -> Default Action
+       // ["~/"] // -> Default Action
         public ActionResult Index()
         {
             return View();

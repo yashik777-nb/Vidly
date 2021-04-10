@@ -9,6 +9,7 @@ using System.Data.Entity;
 
 namespace Vidly.Controllers
 {
+    // [Authorize] -> Protecting A class
     public class CustomersController : Controller
     {
 
@@ -26,8 +27,13 @@ namespace Vidly.Controllers
 
         // GET: Customers
         [Route("customers")]
+        //[OverrideExceptionFilters]
+        //[Authorize]
         public ActionResult Index()
         {
+
+            //Object obj = null;
+            //obj.ToString();
             // data table changes
             //var customersData = _context.Customers.Include(c => c.MembershipType).ToList();
             //return View(customersData);
@@ -35,7 +41,7 @@ namespace Vidly.Controllers
             //return Content("Test");
         }
 
-        //[Route("customers/details/{id}")]
+        //[Route("customers/details/{id:regex(\\d{2})}")]
         public ActionResult Details(int id)
         {
             var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == id);
